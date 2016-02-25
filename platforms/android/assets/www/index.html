@@ -43,7 +43,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.14/d3.min.js"></script>
         <script type="text/javascript" src="js/radial.js"></script>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <title>Hello World</title>
+        <title>Bikinform</title>
     </head>
     <body>
 <div data-role="page" id="map">
@@ -53,7 +53,7 @@
   </div><!-- /header -->
 
   <div role="main" class="ui-content" >
-    <h1>Maps</h1>
+    <h3>Youbike各站點存留變化率</h3>
     </div>
     <div role="main" class="ui-content" id="map-canvas" style="width:100%;height:300px;;">
         <!-- map loads here... -->
@@ -239,7 +239,6 @@
     //- });
   var socket = io('http://bikinform.herokuapp.com');
     socket.on('update data', function(data){
-      console.log('hello');
       remove_markers();
       remove_chart();
 
