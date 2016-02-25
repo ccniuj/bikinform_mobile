@@ -22,6 +22,7 @@
     <preference name="AutoHideSplashScreen" value="true" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <icon src="/www/img/logo.png" density="mdpi" />
         <splash src="/www/img/splash.png" density="port-hdpi"/>
         <splash src="/www/img/splash.png" density="port-ldpi"/>
         <splash src="/www/img/splash.png" density="port-mdpi"/>
