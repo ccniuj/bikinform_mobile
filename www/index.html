@@ -46,52 +46,57 @@
         <title>Bikinform</title>
     </head>
     <body>
-<div data-role="page" id="map">
+<div data-role="page" id="map" data-fullscreen="true">
 
-  <div data-role="header">
+  <div data-role="header" data-id="foo2" data-position="fixed" >
     <h1>Bikinform</h1>
-    <div data-role="navbar">
+  </div>
+
+  <div role="main" class="ui-content" style="padding:0px;" >
+    <div id="map-canvas" style="width:100%;height:400px;">
+    </div>
+    <div id="scale">
+      <img src="img/5.png" style="margin-left:20px;margin-right:5px;"/>
+      <b>> 15%/10mins</b>
+      <img src="img/4.png" style="margin-left:20px;margin-right:5px;"/>
+      <b>> 5%/10mins</b>
+      <img src="img/3.png" style="margin-left:20px;margin-right:5px;"/>
+      <b>< ±5%/10mins</b>
+      <img src="img/2.png" style="margin-left:20px;margin-right:5px;"/>
+      <b>< -5%/10mins</b>
+      <img src="img/1.png" style="margin-left:20px;margin-right:5px;"/>
+      <b>< -15%/10mins</b>
+    </div>
+  </div><!-- /content -->
+  <div data-role="footer" data-id="foo1" data-position="fixed">
+    <div data-role="navbar" data-tap-toggle="false">
       <ul>
-        <li><a href="#anylink">Home</a></li>
-        <li><a href="#anylink">Page Two</a></li>
-        <li><a href="#anylink">Search</a></li>
+        <li><a href="#map" class="ui-btn-active ui-state-persist">各站點變化率</a></li>
+        <li><a href="#info">相關統計</a></li>
       </ul>
     </div>
-  </div><!-- /header -->
-
-  <div role="main" class="ui-content" >
-
-    <h3>Youbike各站點存留變化率</h3>
-    </div>
-    <div role="main" class="ui-content" id="map-canvas" style="width:100%;height:300px;;">
-        <!-- map loads here... -->
-    </div>
-
-    <div id="outer" style="margin-top:20px; padding:10px"></div>
-    <div id="main" class="row"></div>
-
-    <!-- <ul data-role="listview"></ul> -->
-
-  </div><!-- /content -->
-
-  <div data-role="footer" data-theme="a">
-    <h4>Page Footer</h4>
-  </div><!-- /footer -->
+  </div>
 </div><!-- /page one -->
 
-<div data-role="page" id="info">
-  <div data-role="header">
-    <h1>Info</h1>
-    <a data-rel="back" data-transition='slide' data-direction='reverse'>back</a>
-
-  </div><!-- /header -->
-  <div role="main" class="ui-content" id="info_content">
+<div data-role="page" id="info" data-fullscreen="true">
+  <div data-role="header" data-id="foo2" data-position="fixed" >
+    <h1>Bikinform</h1>
+  </div>
+  <div role="main" class="ui-content" >
+    <div id="chart" class="row"></div>
+  </div>
+  <div data-role="footer" data-id="foo1" data-position="fixed" data-tap-toggle="false">
+    <div data-role="navbar" data-tap-toggle="false">
+      <ul>
+        <li><a href="#map">各站點變化率</a></li>
+        <li><a href="#info" class="ui-btn-active ui-state-persist" >相關統計</a></li>
+      </ul>
+    </div>
   </div>
 </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
- 
-        <script type="text/javascript">
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
   $(document).on("pagecreate", "#map", function(event) {
     
     initMap();
@@ -197,7 +202,7 @@
       markers = [];
     }
     function remove_chart() {
-      document.getElementById('main').innerHTML = '';
+      document.getElementById('chart').innerHTML = '';
     }
     //- function focus(label) {
     //-   markers.forEach(function (m) {
@@ -220,7 +225,7 @@
       .value(Math.abs(percentage))
       .render();
 
-      document.getElementById("main").appendChild(div);
+      document.getElementById("chart").appendChild(div);
     }
     function put_marker(d) {
       // debugger;
