@@ -50,9 +50,17 @@
 
   <div data-role="header">
     <h1>Bikinform</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#anylink">Home</a></li>
+        <li><a href="#anylink">Page Two</a></li>
+        <li><a href="#anylink">Search</a></li>
+      </ul>
+    </div>
   </div><!-- /header -->
 
   <div role="main" class="ui-content" >
+
     <h3>Youbike各站點存留變化率</h3>
     </div>
     <div role="main" class="ui-content" id="map-canvas" style="width:100%;height:300px;;">
@@ -87,29 +95,27 @@
   $(document).on("pagecreate", "#map", function(event) {
     
     initMap();
+    // bind a event to pass variavle
+    // $(document).on('click', '.test', function(event) {
+    //   event.preventDefault();
+    //   $.mobile.pageContainer.pagecontainer("change", "#info", { 
+    //     transition: 'slide',
+    //     foo: 'bar',
+    //     id: this.dataset.id
+    //   });
+    // });
 
-    $(document).on('click', '.test', function(event) {
-      event.preventDefault();
-      // $.mobile.pageContainer.pagecontainer("change", "#p2", {
-      //   foo: 'bar'
-      // });
-      $.mobile.pageContainer.pagecontainer("change", "#info", { 
-        transition: 'slide',
-        foo: 'bar',
-        id: this.dataset.id
-      });
-    });
-
-    $.ajax({
-      dataType: "json",
-      url: 'https://apiservertest.herokuapp.com/',
-      success: function(data) {
-          data.forEach(function(d) {
-            var li = "<li><a class='test' href='#info' data-transition='slide' data-id='" + d.id + "'>" + d.title + "</a></li>";
-            $('ul').append(li);
-          })
-      }
-    });
+    // initialize data
+    // $.ajax({
+    //   dataType: "json",
+    //   url: 'https://apiservertest.herokuapp.com/',
+    //   success: function(data) {
+    //       data.forEach(function(d) {
+    //         var li = "<li><a class='test' href='#info' data-transition='slide' data-id='" + d.id + "'>" + d.title + "</a></li>";
+    //         $('ul').append(li);
+    //       })
+    //   }
+    // });
   });
   $(document).on("pagebeforechange", function(event, data){
     var id = data.options.id;
